@@ -59,4 +59,13 @@ public class Transaction {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "payer='" + payer + '\'' +
+                ", points=" + points +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
