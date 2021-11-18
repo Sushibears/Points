@@ -16,11 +16,13 @@ public class Transaction {
     private String payer;
 
     @Column(name = "payer_points")
-    @Min(0)
     private Integer points;
 
     @Column(name = "transaction_timestamp")
     private Timestamp timestamp;
+
+    public Transaction() {
+    }
 
     public Transaction(String payer, Integer points, Timestamp timestamp) {
         this.payer = payer;
