@@ -3,9 +3,9 @@
 Hello! This is a backend project for handling web service requests for a database storing user points.
 
 ## Requirements
-JDK 11 
-Any Maven compatible IDE (I personally used IntelliJ)
-Any API platform (I personally used Postman with the Desktop Client installed.)
+*JDK 11 
+*Any Maven compatible IDE (I personally used IntelliJ)
+*Any API platform (I personally used Postman with the Desktop Client installed.)
 
 ## Set Up
 Download all files directly from the Points folder. Open your IDE and open the Points/Points folder as a project(C:\Users\YourUserName\PointsProject\Points\Points).
