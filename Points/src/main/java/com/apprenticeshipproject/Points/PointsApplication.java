@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PointsApplication {
 
-	@Autowired
-	TransactionRepository repo;
 	public static void main(String[] args) {
 		SpringApplication.run(PointsApplication.class, args);
 	}

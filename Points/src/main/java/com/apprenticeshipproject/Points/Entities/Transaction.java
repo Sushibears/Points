@@ -1,8 +1,7 @@
 package com.apprenticeshipproject.Points.Entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Table(name = "TRANSACTIONS")
 @Entity
@@ -19,12 +18,12 @@ public class Transaction {
     private Integer points;
 
     @Column(name = "transaction_timestamp")
-    private Timestamp timestamp;
+    private LocalDate timestamp;
 
     public Transaction() {
     }
 
-    public Transaction(String payer, Integer points, Timestamp timestamp) {
+    public Transaction(String payer, Integer points, LocalDate timestamp) {
         this.payer = payer;
         this.points = points;
         this.timestamp = timestamp;
@@ -54,11 +53,11 @@ public class Transaction {
         this.points = points;
     }
 
-    public Timestamp getTimestamp() {
+    public LocalDate getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(LocalDate timestamp) {
         this.timestamp = timestamp;
     }
 
