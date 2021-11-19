@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @RestController
 public class TransactionController {
@@ -51,11 +53,23 @@ public class TransactionController {
          Repo.saveAll(newTransactions);
     }
 
-    @PostMapping("/transactions/pointsupdate")
-    public void removePoints(@RequestBody int points){
-        Transaction updatedTransaction = Repo.getById(transactionId);
-        int newPoints = updatedTransaction.getPoints() + points;
-        Repo.getById(transactionId).setPoints(newPoints);
+    @PostMapping("/transactions/pointsupdate/remove")
+    public HashMap<String, Integer> removePoints(@RequestBody int points){
+        List<Transaction> processing = Repo.findAllByOrderByTimestampDesc();
+        HashMap<String, Integer> finalList = new HashMap<>();
+        AtomicBoolean stopLoop = new AtomicBoolean(false);
+        if(!stopLoop.get()){
+            processing.forEach(Transaction -> {
+                int loopPoints = points - Transaction.getPoints();
+                if(loopPoints > 0){
+                    finalList.put(Transaction.getPayer(),Transaction.getPoints() * -1);
+                    Transaction.setPoints(0);
+                } else {
+                    stopLoop.set(true);
+                }
+            });
+        }
+        return finalList;
     }
 
 
